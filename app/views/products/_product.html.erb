@@ -1,0 +1,59 @@
+<style>
+  .detail-link:link, detail-link:visited {
+    color: #555;
+    text-decoration: none;
+
+  }
+  .detail-link:hover, .detail-link:active {
+      color: #555;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+  }
+</style>
+<div class="meal" id="meal">
+            <%= image_tag product.image, class: "meal-img", id: "meal-img", style: "height: 180px" %>
+            <div class="meal-content" id="meal-content">
+              <div class="meal-tags">
+                <span class="tag tag--<%=Category.find_by(:id => product.category_id).name.downcase%>"><%= Category.find_by(:id => product.category_id).name.downcase %></span>
+              </div>
+              <p class="meal-title" id = "meal-title" style="height: 46px"><%= product.name %></p>
+              <ul class="meal-attributes">
+
+                <li class="meal-attribute">
+                  <ion-icon
+                    class="meal-icon"
+                    name="restaurant-outline"
+                  ></ion-icon>
+                  <a  style="color: #555" class="detail-link" href="products/<%=product.id%>">Show detail<strong> &rarr;</strong></a>
+                </li>
+                <li class="meal-attribute">
+                  <ion-icon class="meal-icon" name="cash-outline"></ion-icon>
+                  <span><strong><%= product.price %></strong> VND</span>
+                </li>
+                <div class="meal-price">
+
+                        <% if logged_in? && (FavouriteManager.find_by(user_id: current_user.id, product_id: product.id) == nil) %>
+                          <%= button_to add_to_favourite_path(product), method: :post, style: "background: none; border: none; padding: 0" do %>
+                            <ion-icon
+                          name="heart-outline"
+                          style="color: #f03e3e; width: 28px; height: 28px"
+                        ></ion-icon>
+                          <% end %>
+                        <% else %>
+                          <%= button_to remove_from_favourite_path(product), method: :delete, style: "background: none; border: none; padding: 0" do %>
+                            <ion-icon
+                          name="heart"
+                          style="color: #f03e3e; width: 28px; height: 28px"
+                        ></ion-icon>
+                          <% end %>
+                        <% end %>
+
+                  <% if @cart.include?(product) %>
+                    <%= button_to "Remove", remove_from_cart_path(product), method: :delete, class: "btn btn--small" %>
+                  <% else %>
+                    <%= button_to "Add to cart", add_to_cart_path(product), class: "btn btn--small" %>
+                  <% end %>
+                </div>
+              </ul>
+            </div>
+          </div>

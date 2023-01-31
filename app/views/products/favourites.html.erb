@@ -1,0 +1,70 @@
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products", "data-turbo-track": "reload" %>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"/>
+
+<p style="color: green"><%= notice %></p>
+
+<body>
+    <%= render 'header' %>
+    <main>
+      <h1 class="container margin-bottom-md" style="font-size: 4rem; margin-left: 180px">Here is your favourite meals list: </h1>
+      <div
+        class="container grid grid--4-cols margin-bottom-md"
+        id="card-container">
+        <% @favourite_managers.each do |favourite_manager| %>
+          <% if favourite_manager.user_id == current_user.id %>
+          <div class="meal" id="meal">
+            <%= image_tag favourite_manager.product.image, class: "meal-img", id: "meal-img" %>
+            <div class="meal-content" id="meal-content">
+              <div class="meal-tags">
+                <span class="tag tag--<%=Category.find_by(:id => favourite_manager.product.category_id).name.downcase%>"><%= Category.find_by(:id => favourite_manager.product.category_id).name.downcase %></span>
+              </div>
+              <p class="meal-title" id = "meal-title"><%= favourite_manager.product.name %></p>
+              <ul class="meal-attributes">
+
+                <li class="meal-attribute">
+                  <ion-icon
+                    class="meal-icon"
+                    name="restaurant-outline"
+                  ></ion-icon>
+                  <a  style="color: #555" class="detail-link" href="products/<%=favourite_manager.product.id%>">Show detail<strong> &rarr;</strong></a>
+                </li>
+                <li class="meal-attribute">
+                  <ion-icon class="meal-icon" name="cash-outline"></ion-icon>
+                  <span><strong><%= favourite_manager.product.price %></strong> VND</span>
+                </li>
+                <div class="meal-price">
+                  <% if FavouriteManager.find_by(user_id: current_user.id, product_id: favourite_manager.product.id) == nil %>
+                    <%= button_to add_to_favourite2_path(favourite_manager.product), method: :post, style: "background: none; border: none; padding: 0" do %>
+                      <ion-icon
+                    name="heart-outline"
+                    style="color: #f03e3e; width: 28px; height: 28px"
+                  ></ion-icon>
+                    <% end %>
+                  <% else %>
+                    <%= button_to remove_from_favourite2_path(favourite_manager.product), method: :delete, style: "background: none; border: none; padding: 0" do %>
+                      <ion-icon
+                    name="heart"
+                    style="color: #f03e3e; width: 28px; height: 28px"
+                  ></ion-icon>
+                    <% end %>
+                  <% end %>
+
+
+                </div>
+              </ul>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </main>
+    <%= render 'manage-account'%>
+  </body>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

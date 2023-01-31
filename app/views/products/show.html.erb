@@ -1,0 +1,57 @@
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "show_product", "data-turbo-track": "reload" %>
+<script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
+<body>
+    <main>
+      <div class="content-container">
+        <div class="container component-arrangement box-content">
+          <div class="img-container">
+            <div class="item">
+              <%= image_tag @product.image, class: "meal-img" %>
+
+            </div>
+          </div>
+          <div class="display-info">
+            <p class="meal-name">Name: <%= @product.name %></p>
+
+            <ul class="meal-info-list">
+              <li></li>
+              <li class="meal-info">
+                <span class="meal-attribute-info"><b>Description: </b></span>
+                We are a technology company first, but with a major focus on
+                consumer well-being through a healthy diet.
+              </li>
+              <li class="meal-info">
+                <span class="meal-attribute-info"><b>Category: </b></span>
+                <%= Category.find_by(id: @product.category_id).name %>
+              </li>
+              <li class="meal-info">
+                <span class="meal-attribute-info"><b>Price: </b><%= @product.price %> </span>
+
+              </li>
+            </ul>
+            <div class="two-buttons-container">
+              <a href="#" class="btn btn--small" id="btn--red"
+                >Add to favourite</a
+              >
+              <a href="#" class="btn btn--small">Add to cart</a>
+            </div>
+          </div>
+        </div>
+        <a href="/products" class="cart--info--backlink">
+          &larr; Back to all products</a
+        >
+      </div>
+    </main>

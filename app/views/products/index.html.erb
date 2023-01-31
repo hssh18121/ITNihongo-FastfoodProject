@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products", "data-turbo-track": "reload" %>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"/>
+
+<p style="color: green"><%= notice %></p>
+
+<body>
+    <%= render 'header' %>
+    <main>
+      <%= render 'filter' %>
+      <div
+        class="container grid grid--4-cols margin-bottom-md"
+        id="card-container">
+
+        <% @products.each do |product| %>
+          <%= render 'product', product: product %>
+        <% end %>
+
+      </div>
+
+    </main>
+    <div class="apple_pagination">
+      <%= will_paginate @posts, :container => false %>
+    </div>
+  </body>
+  <%= render 'manage-account'%>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

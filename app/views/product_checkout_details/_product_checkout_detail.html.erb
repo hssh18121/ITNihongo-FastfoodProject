@@ -1,0 +1,19 @@
+<div id="<%= dom_id product_checkout_detail %>">
+  <p>
+    <strong>Name:</strong>
+    <%= product_checkout_detail.name %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= product_checkout_detail.price %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= button_to "Add", add_quantity_path(product_checkout_detail) %>
+    <div><%= product_checkout_detail.quantity %></div>
+    <%= button_to "Subtract", subtract_quantity_path(product_checkout_detail) %>
+  </p>
+
+</div>

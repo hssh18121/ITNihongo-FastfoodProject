@@ -1,0 +1,326 @@
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "show_product", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "cart", "data-turbo-track": "reload" %>
+<script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+  <script defer src="js/script.js"></script>
+<style>
+/*
+    SPACING SYSTEM (px)
+    2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+    FONT SIZE SYSTEM (px)
+    10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+    */
+/*
+    GREY COLOR: #343a40
+    */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-evenly;
+      position: relative;
+      min-height: 100vh;
+      background-image: linear-gradient(
+          rgba(34, 34, 34, 0.603),
+          rgba(34, 34, 34, 0.603)
+        ),
+        url("assets/meal-9.jpg");
+      background-size: cover;
+    }
+    table {
+      width: 900px;
+      margin-top: 20px;
+      font-size: 18px;
+      /* border: 1px solid #343a40; */
+      border-collapse: collapse;
+      border-radius: 9px;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+
+    th,
+    td {
+      /* border: 1px solid #343a40; */
+      padding: 24px 16px;
+      text-align: left;
+    }
+
+    thead tr {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    thead th {
+      width: 25%;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #f8f9fa;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #e9ecef;
+    }
+
+    .checkout--info--container {
+      width: 300px;
+      padding: 20px;
+      height: 270px;
+      background: rgb(256, 256, 256, 0.8);
+      margin-top: 90px;
+      box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 10%), 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    }
+    .cart--info--backlink:link,
+    .cart--info--backlink:visited {
+      display: inline-block;
+      padding-top: 30px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 2.5rem;
+      margin-left: 0;
+    }
+
+    .cart--info--backlink:hover,
+    .cart--info--backlink:active {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+    }
+    .orange-button {
+      margin-top: 20px;
+      margin-bottom: 15px;
+      width: 100%;
+      font-weight: 600;
+      background-color: #fd7e14;
+      color: #fff;
+      text-decoration: none;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 15px;
+      border-radius: 5px;
+      border: none;
+      text-transform: uppercase;
+    }
+    .orange-button:hover {
+      background-color: #f76707;
+    }
+    .green-button {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 15px;
+      margin-bottom: 15px;
+      width: 100%;
+      font-weight: 600;
+      background-color: #2f9e44;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      text-transform: uppercase;
+    }
+    .green-button:hover {
+      background-color: #2b8a3e;
+    }
+    .total--price--field {
+      font-size: 3.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    body {
+
+  position: relative;
+}
+
+.show-modal {
+
+  cursor: pointer;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+
+
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  font-size: 1.8rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+</style>
+  <body>
+
+  <main>
+    <div>
+      <div>
+        <a href="#" class="cart--info--backlink" style="font-size: 30px; margin-top: 30px">Cart information:</a>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 80px"></th>
+              <th>Name</th>
+              <th></ion-icon>Number ordered<a href="#"
+              ></th>
+              <th>Price</th>
+              <th style="text-align: center">Remove</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          <% @product_checkout_details.each do |product_checkout_detail| %>
+              <tr>
+                <th>
+                  <%= image_tag Product.find_by(:name => product_checkout_detail.name).image, style: "width: 100px; height: 70px" %>
+
+                </th>
+                <th><%= product_checkout_detail.name %></th>
+                <td ><div style="display: flex; align-items: center; gap: 10px">
+
+                <%= button_to subtract_quantity_path(product_checkout_detail), method: :post, style: "background: none; border: none; padding: 0" do %>
+                  <ion-icon
+                name="remove-circle"
+                style="color: #fd7e14; width: 28px; height: 28px"
+              ></ion-icon>
+                <% end %>
+                <%= product_checkout_detail.quantity %>
+                <%= button_to add_quantity_path(product_checkout_detail), method: :post, style: "background: none; border: none; padding: 0" do %>
+                  <ion-icon
+                name="add-circle"
+                style="color: #fd7e14; width: 28px; height: 28px"
+              ></ion-icon>
+                <% end %>
+                </div></td>
+                <td><%= product_checkout_detail.price.to_i * product_checkout_detail.quantity.to_i %> VND</td>
+                <td style="text-align: center">
+                <%= button_to remove_product_in_cart_path(product_checkout_detail), method: :delete, style: "background: none; border: none; padding: 0" do %>
+                    <ion-icon
+                      name="trash-bin"
+                      style="color: red; width: 30px; height: 30px"
+                    ></ion-icon
+                  ><% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="checkout--info--container">
+      <p style="font-size: 2rem; margin-bottom: 1rem;">Total:</p>
+      <p class="total--price--field">
+        <% total = 0 %>
+        <% @product_checkout_details.each do |product_checkout_detail| %>
+        <% total += product_checkout_detail.price.to_i * product_checkout_detail.quantity.to_i %>
+        <% end %>
+        <%= total %>VND</p>
+      <hr style="margin-top: 20px">
+
+      <button class="orange-button show-modal">Buy now!</button>
+      <%= button_to "Continue shopping", products_path, class: "green-button", method: :get  %>
+
+    </div>
+    <section class="section-cta modal hidden" style="background:none; padding: 0px; overflow: hidden">
+    <div >
+      <div class="cta">
+        <button class="close-modal">&times;</button>
+        <div class="cta-text-box">
+          <h2 class="heading-secondary">Just one more step!</h2>
+          <p class="cta-text">
+            Your delicious meals are ready to be delivered to you. Just fill in your information
+            so we can ship it to your house!
+          </p>
+
+
+          <%= form_with(url: checkout_path, local: true, method: :post, class: "cta-form") do |form| %>
+            <div>
+              <label for="full-name">Full Name</label>
+              <%= form.text_field :name, size: "30", placeholder: "Nguyen Van Abc"%>
+            </div>
+
+            <div>
+              <label for="phone">Your phone number</label>
+              <%= form.text_field :phone, size: "30", placeholder: "092 1234 849"%>
+            </div>
+
+
+            <div>
+              <label for="address">Your address</label>
+              <%= form.text_field :address, size: "30", placeholder: "So 1 Dai Co Viet"%>
+            </div>
+
+            <%= button_to "Checkout", checkout_path, method: :post, class: "btn btn--form"%>
+            <% end %>
+
+
+
+        </div>
+        <div
+          class="cta-img-box"
+          role="img"
+          aria-label="Woman enjoying food"
+          style="background-image: url(assets/meal-8.jpg)"
+        ></div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+    <div class="overlay hidden"></div>
+</body>
+
+<script>
+
+</script>

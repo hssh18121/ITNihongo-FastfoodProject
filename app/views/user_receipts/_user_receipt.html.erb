@@ -1,0 +1,27 @@
+<div id="<%= dom_id user_receipt %>">
+  <p>
+    <strong>Name:</strong>
+    <%= user_receipt.name %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= user_receipt.phone %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= user_receipt.address %>
+  </p>
+
+  <p>
+    <strong>Total:</strong>
+    <%= user_receipt.total %>
+  </p>
+
+  <p>
+    <strong>Show details: </strong>
+    <% if user_receipt.file.previewable? %>
+    <%= link_to user_receipt.name, rails_blob_path(user_receipt.file, disposition: "inline") %>
+    <% end %>
+</div>

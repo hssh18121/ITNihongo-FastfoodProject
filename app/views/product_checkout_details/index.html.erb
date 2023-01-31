@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Product checkout details</h1>
+
+<div id="product_checkout_details">
+  <% @product_checkout_details.each do |product_checkout_detail| %>
+    <%= render product_checkout_detail %>
+    <p>
+      <%= link_to "Show this product checkout detail", product_checkout_detail %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New product checkout detail", new_product_checkout_detail_path %>
