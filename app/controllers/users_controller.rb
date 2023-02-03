@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     @user.phone = params[:phone]
     @user.password = params[:password]
-    @user.admin = true
+    @user.admin = false
     @user.save
     redirect_to login_path
   end

@@ -1,9 +1,4 @@
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-<style>
-    #users {
-        font-size: 16px;
-    }
-</style>
 <body>
 <header class="header " >
       <a href="/products" class="main-nav-link" style="font-size: 3rem;">
@@ -35,14 +30,9 @@
 
 <h1>Users</h1>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<div >
+  <a href="#">show all products</a>
 </div>
 
-<%= link_to "New user", new_user_path %>
+
 </body>

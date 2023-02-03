@@ -5,18 +5,28 @@
 
       <nav class="main-nav">
         <ul class="main-nav-list">
-          <li><a class="main-nav-link" style="font-weight: 500" href="/manage_account">Manage account</a></li>
-          <li><a class="main-nav-link" href="/user_receipts">Order history</a></li>
-          <li><a class="main-nav-link" href="/change_password">Change password</a></li>
+          
           <% if logged_in? %>
-          <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
+              <% if current_user.admin == false %>
+                  <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
+                  <li><a class="main-nav-link" style="font-weight: 500" href="/manage_account">Manage account</a></li>
+                  <li><a class="main-nav-link" href="/user_receipts">Order history</a></li>
+                  <li><a class="main-nav-link" href="/change_password">Change password</a></li>
+                  <li><a class="main-nav-link" href="favourites">Favourites</a></li>
+                  <li><%= link_to 'Your cart', cart_path, class: "main-nav-link nav-cta"  %></li>
+              <% else %>
+                  <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
+                  <li><a class="main-nav-link" style="font-weight: 500" href="/manage_products">Manage Products</a></li>
+                  <li><a class="main-nav-link" href="/user_receipts">Orders</a></li>
+                  <li><a class="main-nav-link" href="/users">Manage Users</a></li>
+              <% end %>
           <% else %>
           <li>
             <div><%= link_to 'LOGIN', login_path, class: "main-nav-link"  %></div>
           </li>
           <% end %>
-          <li><a class="main-nav-link" href="favourites">Favourites</a></li>
-          <li><%= link_to 'Your cart', cart_path, class: "main-nav-link nav-cta"  %></li>
+          
+          
         </ul>
       </nav>
 

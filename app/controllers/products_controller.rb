@@ -261,6 +261,8 @@ class ProductsController < ApplicationController
     @favourite_managers = FavouriteManager.all
   end
 
+  def manage_products 
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   post 'register', to: 'users#create_user'
   get "change_password", to: 'users#change_password'
   post "change_password", to: 'users#save_change_password'
+  
+#   Admin routes 
+    get 'manage_products', to: 'products#manage_products'
 end
