@@ -66,6 +66,10 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     @user.phone = params[:phone]
     @user.save
+     respond_to do |format|
+        format.html { redirect_to products_path, notice: "User was successfully updated." }
+        format.json { render :show, status: :ok, location: @user }
+     end
   end
 
   def change_password

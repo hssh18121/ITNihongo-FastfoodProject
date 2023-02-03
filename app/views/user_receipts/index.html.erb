@@ -85,9 +85,16 @@
     body {
 
   position: relative;
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 700;
+  color: #555;
 }
 
-
+#main-nav-link-in-order-history {
+    font-weight: 700;
+    cursor: pointer;
+}
 
 
 </style>
@@ -98,18 +105,18 @@
       </a>
 
       <nav class="main-nav" >
-        <ul class="main-nav-list">
+        <ul class="main-nav-list" id="main-nav-link-in-order-history">
           <li><a class="main-nav-link" style="font-size: 2rem">Manage account</a></li>
-          <li><a class="main-nav-link" href="/user_receipts">Order history</a></li>
+          <li><a class="main-nav-link" id="main-nav-link-in-order-history" href="/user_receipts">Order history</a></li>
           <% if logged_in? %>
-          <li><%= link_to 'Log out', logout_path, method: :post, data: {"turbo-method": :delete}, class: "main-nav-link" %></li>
+          <li><%= link_to 'Log out', logout_path, method: :post, data: {"turbo-method": :delete}, class: "main-nav-link", id: "main-nav-link-in-order-history" %></li>
           <% else %>
           <li>
-            <div><%= link_to 'LOGIN', login_path, class: "main-nav-link"  %></div>
+            <div><%= link_to 'LOGIN', login_path, class: "main-nav-link", id: "main-nav-link-in-order-history"  %></div>
           </li>
           <% end %>
-          <li><a class="main-nav-link" href="favourites">Favourites</a></li>
-          <li><a class="main-nav-link nav-cta" href="/cart">Your Cart</a></li>
+          <li><a class="main-nav-link" id="main-nav-link-in-order-history" href="favourites">Favourites</a></li>
+          <li><a class="main-nav-link nav-cta" id="main-nav-link-in-order-history" href="/cart">Your Cart</a></li>
         </ul>
       </nav>
 
