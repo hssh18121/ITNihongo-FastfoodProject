@@ -27,8 +27,16 @@ class ProductsController < ApplicationController
 
   def cart
     @product_checkout_details = ProductCheckoutDetail.all
+   
   end
-
+    
+    
+    def show_checkout_form 
+    end
+    
+    def manage_account 
+    end
+    
   def add_quantity
     id = params[:id].to_i
     @product_checkout_detail = ProductCheckoutDetail.find_by(id: id)

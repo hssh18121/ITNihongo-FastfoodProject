@@ -16,7 +16,7 @@
           </li>
           <% end %>
           <li><a class="main-nav-link" href="favourites">Favourites</a></li>
-          <li><a class="main-nav-link nav-cta" href="/cart">Your Cart</a></li>
+          <li><%= link_to 'Your cart', cart_path, class: "main-nav-link nav-cta"  %></li>
         </ul>
       </nav>
 
