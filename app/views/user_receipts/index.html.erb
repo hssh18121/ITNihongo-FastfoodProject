@@ -99,32 +99,7 @@
 
 </style>
 
-<header class="header " >
-      <a href="/products" class="main-nav-link" style="font-size: 3rem;">
-        Fastfood
-      </a>
-
-      <nav class="main-nav" >
-        <ul class="main-nav-list" id="main-nav-link-in-order-history">
-          <li><a class="main-nav-link" style="font-size: 2rem">Manage account</a></li>
-          <li><a class="main-nav-link" id="main-nav-link-in-order-history" href="/user_receipts">Order history</a></li>
-          <% if logged_in? %>
-          <li><%= link_to 'Log out', logout_path, method: :post, data: {"turbo-method": :delete}, class: "main-nav-link", id: "main-nav-link-in-order-history" %></li>
-          <% else %>
-          <li>
-            <div><%= link_to 'LOGIN', login_path, class: "main-nav-link", id: "main-nav-link-in-order-history"  %></div>
-          </li>
-          <% end %>
-          <li><a class="main-nav-link" id="main-nav-link-in-order-history" href="favourites">Favourites</a></li>
-          <li><a class="main-nav-link nav-cta" id="main-nav-link-in-order-history" href="/cart">Your Cart</a></li>
-        </ul>
-      </nav>
-
-      <button class="btn-mobile-nav">
-        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-      </button>
-    </header>
+<%= render 'header' %>
 
 <body>
 

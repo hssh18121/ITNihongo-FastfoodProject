@@ -1,38 +1,80 @@
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<style>
+    .product-name-field {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    
+    table {
+      width: 1200px;
+      margin-top: 20px;
+      font-size: 18px;
+      /* border: 1px solid #343a40; */
+      border-collapse: collapse;
+      border-radius: 9px;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+
+    th,
+    td {
+      /* border: 1px solid #343a40; */
+      padding: 36px 40px;
+      text-align: left;
+    }
+
+    thead tr {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    thead th {
+      width: 25%;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #f8f9fa;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #e9ecef;
+    }
+
+</style>
 <body>
-<header class="header " >
-      <a href="/products" class="main-nav-link" style="font-size: 3rem;">
-        Fastfood
-      </a>
-
-      <nav class="main-nav" >
-        <ul class="main-nav-list" id="main-nav-link-in-order-history">
-          <li><a class="main-nav-link" style="font-size: 2rem">Manage account</a></li>
-          <li><a class="main-nav-link" id="main-nav-link-in-order-history" href="/user_receipts">Order history</a></li>
-          <% if logged_in? %>
-          <li><%= link_to 'Log out', logout_path, method: :post, data: {"turbo-method": :delete}, class: "main-nav-link", id: "main-nav-link-in-order-history" %></li>
-          <% else %>
-          <li>
-            <div><%= link_to 'LOGIN', login_path, class: "main-nav-link", id: "main-nav-link-in-order-history"  %></div>
-          </li>
-          <% end %>
-          <li><a class="main-nav-link" id="main-nav-link-in-order-history" href="favourites">Favourites</a></li>
-          <li><a class="main-nav-link nav-cta" id="main-nav-link-in-order-history" href="/cart">Your Cart</a></li>
-        </ul>
-      </nav>
-
-      <button class="btn-mobile-nav">
-        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-      </button>
-    </header>
+<%= render 'header' %>
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
 
-<div >
-  <a href="#">show all products</a>
-</div>
+<div style="display: flex; justify-content: center">
+        <table>
+          <thead>
+            <tr>
+
+              <th>Image</th>
+              <th>Product name</th>
+              <th>Price</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          <% @products.each do |product| %>
+              <tr>
+
+                <th><%= image_tag product.image, style: "width: 100px; height: 70px" %></th>
+                <td><%= product.name %> </td>
+                <td><%= product.price %>VND</td>
+                <td >
+                  <%= link_to "Edit this product", edit_product_path(product) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+<a href="products/new">Add New Product</a>
 
 
 </body>
