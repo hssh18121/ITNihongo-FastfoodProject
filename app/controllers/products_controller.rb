@@ -2,12 +2,9 @@ class ProductsController < ApplicationController
 
   before_action :require_user, except: [:favourites, :show, :index, :search, :filter]
   before_action :require_admin, except: [:cart, :favourites, :search, :sort, :show, :index, :add_to_cart, :remove_from_cart, :checkout, :new_checkout, :add_quantity, :subtract_quantity,
-  :add_to_favourite, :remove_from_favourite, :add_to_favourite2, :remove_from_favourite2, :remove_product_in_cart]
-    before_action :load_categories
+  :add_to_favourite, :remove_from_favourite, :add_to_favourite2, :remove_from_favourite2, :remove_product_in_cart, :manage_account, :show_checkout_form]
     
-    def load_categories
-        @categories = Category.all
-    end
+   
   def add_to_cart
     id = params[:id].to_i
     session[:cart] << id unless session[:cart].include?(id)
@@ -174,28 +171,27 @@ class ProductsController < ApplicationController
   end
   # GET /products/1 or /products/1.json
   def show
+      @categories = Category.all
     @product = Product.find(params[:id])
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   # GET /products/1/edit
   def edit
+      @categories = Category.all
     @product = Product.find(params[:id])
   end
 
   # POST /products or /products.json
   def create
-     @product = Product.new
-    @product.name = params[:name].to_s
-    @product.description = params[:description].to_s
-    @product.price = params[:price].to_i
-    @product.image = params[:image]
+      @categories = Category.all
+    @product = Product.new(product_params)
     @product.category_id = params[:category_id].to_i
-    
 
     respond_to do |format|
       if @product.save
@@ -211,9 +207,10 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
     @product = Product.find(params[:id])
+     @product.category_id = params[:category_id].to_i
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
+        format.html { redirect_to manage_products_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }

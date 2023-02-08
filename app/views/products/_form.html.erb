@@ -154,6 +154,7 @@
                                <label for="category_id">Category </label>
                               <select class="input-area" id="category_id" name="category_id">
                                   <% @categories.each do |category| %>
+                                     <option value="" selected disabled hidden>Choose here</option>
                                      <option value="<%= category.id.to_i %>"><%= category.name %></option>
                                   <% end %>
                                 </select>
@@ -175,7 +176,7 @@
                         
                         </br>
                         <div class="input-block" id="link-to-other-pages">
-                          <%= link_to "Show this product", @product %> |
+                         
                           <%= link_to "Back to dashboard", manage_products_path %> |
                           <%= link_to "Destroy this product", @product, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }  %>
                         </div>

@@ -1,9 +1,13 @@
-<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 <header class="header margin-bottom-md ">
-      <a href="/products" class="main-nav-link" style="font-size: 3rem;">
-        Fastfood
-      </a>
-
+    <% if current_user.admin == false %>
+          <a href="/products" class="main-nav-link" style="font-size: 3rem;">
+            Fastfood
+          </a>
+     <% else %>
+          <a href="/manage_products" class="main-nav-link" style="font-size: 3rem;">
+            Dashboard
+          </a>
+     <% end %>
       <nav class="main-nav">
         <ul class="main-nav-list">
           
