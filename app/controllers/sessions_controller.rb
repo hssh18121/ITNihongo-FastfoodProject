@@ -7,8 +7,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:notice] = "Logged in successfully"
-      redirect_to products_path, status: :see_other
-
+      if user.admin == false 
+        redirect_to products_path, status: :see_other
+      else 
+        redirect_to manage_products_path, status: :see_other
+      end
     else
       render 'new'
       flash[:notice] = "Something was wrong"

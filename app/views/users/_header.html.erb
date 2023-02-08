@@ -1,4 +1,3 @@
-<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 <header class="header margin-bottom-md ">
       <a href="/products" class="main-nav-link" style="font-size: 3rem;">
         Fastfood
@@ -19,7 +18,7 @@
                   <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
                   <li><a class="main-nav-link" style="font-weight: 500" href="/manage_products">Manage Products</a></li>
                   <li><a class="main-nav-link" href="/user_receipts">Orders</a></li>
-                  <li><a class="main-nav-link" href="/manage_categories">Manage Categories</a></li>
+                  <li><a class="main-nav-link" href="/users">Manage Users</a></li>
               <% end %>
           <% else %>
           <li>

@@ -45,16 +45,16 @@
       background-color: #e9ecef;
     }
     
-    .add-new-product-link:link,
-    .add-new-product-link:visited {
+    .add-new-category-link:link,
+    .add-new-category-link:visited {
        
       text-decoration: none;
       color: #e67e22;
       font-size: 20px;
     }
 
-    .add-new-product-link:active,
-    .add-new-product-link:hover {
+    .add-new-category-link:active,
+    .add-new-category-link:hover {
         
       color: #e67e22;
       text-decoration: underline;
@@ -76,29 +76,28 @@
           <thead>
             <tr>
 
-              <th>Image</th>
-              <th>Product name</th>
-              <th>Price</th>
+              
+              <th>Category ID</th>
+              <th>Category name</th>
               <th>Edit</th>
             </tr>
           </thead>
 
           <tbody>
 
-          <% @products.each do |product| %>
+          <% @categories.each do |category| %>
               <tr>
 
-                <th><%= image_tag product.image, style: "width: 100px; height: 70px" %></th>
-                <td><%= product.name %> </td>
-                <td><%= product.price %>VND</td>
+                <td><%= category.id %> </td>
+                <td><%= category.name %></td>
                 <td >
-                  <%= link_to "Edit this product", edit_product_path(product) %>
+                  <%= link_to "Edit this category", edit_category_path(category) %>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
-        <a href="products/new" class="add-new-product-link">Add New Product</a>
+        <a href="categories/new" class="add-new-category-link">Add New Category</a>
       </div>
 
 

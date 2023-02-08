@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   
 #   Admin routes 
     get 'manage_products', to: 'products#manage_products'
+    get 'manage_categories', to: 'categories#manage_categories'
 end

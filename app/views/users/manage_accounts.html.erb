@@ -1,0 +1,122 @@
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "show_product", "data-turbo-track": "reload" %>
+<p style="color: green"><%= notice %></p>
+<style>
+    body {
+  height: 210vh;
+  position: relative;
+}
+
+.show-modal {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+
+
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  font-size: 1.8rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+</style>
+
+
+
+<body>
+    <%= render 'header' %>
+  <main>
+    <section class="section-cta modal " style="background:none; padding: 0px; overflow: hidden">
+  <div >
+    <div style="background: #fff">
+      <button class="close-modal">&times;</button>
+      <div class="cta-text-box">
+        <h2 class="heading-secondary">Change your user profile</h2>
+        <p class="cta-text">
+          You can change your name, phone number, your email address that your registered previously in here.
+        </p>
+
+
+        <% if logged_in? %>
+        <form class="cta-form" action="/update_profile/<%=current_user.id%>" method="post">
+          <div>
+            <label for="full-name">Your name</label>
+            <input
+              id="full-name"
+              type="text"
+              placeholder="John Smith"
+              name = "name"
+              value = "<%= current_user.name %>"
+            />
+          </div>
+
+          <div>
+            <label for="phone">Your phone number</label>
+            <input
+              id="phone"
+              type="phone"
+              placeholder="0123 456 789"
+              name ="phone"
+              value = "<%= current_user.phone %>"
+            />
+          </div>
+
+
+          <div>
+            <label for="email">Your address</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="hason@gmail.com"
+              name="email"
+              value = "<%= current_user.email %>"
+            />
+          </div>
+
+          <button type="submit" class="btn btn--form close">Edit profile</button>
+
+        </form>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</section>
+    </main>
+
+</body>
+

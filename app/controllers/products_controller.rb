@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   before_action :require_user, except: [:favourites, :show, :index, :search, :filter]
   before_action :require_admin, except: [:cart, :favourites, :search, :sort, :show, :index, :add_to_cart, :remove_from_cart, :checkout, :new_checkout, :add_quantity, :subtract_quantity,
   :add_to_favourite, :remove_from_favourite, :add_to_favourite2, :remove_from_favourite2, :remove_product_in_cart]
-
+    before_action :load_categories
+    
+    def load_categories
+        @categories = Category.all
+    end
   def add_to_cart
     id = params[:id].to_i
     session[:cart] << id unless session[:cart].include?(id)
@@ -185,11 +189,17 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+     @product = Product.new
+    @product.name = params[:name].to_s
+    @product.description = params[:description].to_s
+    @product.price = params[:price].to_i
+    @product.image = params[:image]
+    @product.category_id = params[:category_id].to_i
+    
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
+        format.html { redirect_to manage_products_url(@product), notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }

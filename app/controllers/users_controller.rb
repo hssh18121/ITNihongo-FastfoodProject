@@ -51,6 +51,9 @@ class UsersController < ApplicationController
     end
   end
 
+
+def manage_accounts 
+end
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
