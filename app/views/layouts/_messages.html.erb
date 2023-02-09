@@ -1,13 +1,44 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
+        <style>
+        @keyframes myAnimation{
+      0%{
+        opacity: 1;
+        
+      }
+      50%{
+        opacity: 0.8;
+        
+      }
+      100%{
+        display: none;
+        opacity: 0;
+        
+      }
+    }
+    
+    #myelement{
+        z-index: 1000;
+        background-color: #b2f2bb;
+        padding: 25px 50px;
+        animation-name: myAnimation;
+        animation-duration: 3500ms;
+        animation-fill-mode: forwards;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-size: 30px;
+    }
+    
+    body {
+        position: relative;
+    }
+    </style>
   <% flash.each do |name, msg|%>
-    <div class="alert alert-success" role="alert">
-      <%= msg %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
+    <div id="myelement">
+        <%= msg %>
     </div>
+   
 
 
   <% end %>
