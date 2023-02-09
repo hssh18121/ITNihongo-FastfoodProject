@@ -31,14 +31,14 @@
 - ***Note: A new product couldn't be created without a category, so make sure to create a category first"***
 
 ## To-do tasks: 
-- Implement UI for the admin page 
-- Specifying user and admin role (by default right now, every user is set to become admin after registering)
+- Implement UI for the admin page (almost done)
+- Specifying user and admin role (the default role is user, you could set an account to become admin by using the rails console)
 - Refactor the source code, since everything is extremely chaotic right now :)
-- Fix the pop-up modal bug, which means re-writing a bit of javascript (pop-up modal sometimes does not show up when first rendering a page, need to refresh to make it work normally)
-- Could not preview the invoice pdf when running on paiza, because the gem "poppler" could not be installed for some reasons
+- Adding styles to flash messages
+
 
 ### Recommended: 
-- Read the routes.rb file for the full version of routes definition in this project, and try to read the (very messy) code to understand what is going on :D 
+- Read the routes.rb file for the full version of routes definition in this project
 - Use the command rails console to alter the data directly in the terminal
 - Use the command rails routes --expanded to see a clearer version of routes list
 
