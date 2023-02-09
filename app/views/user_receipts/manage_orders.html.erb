@@ -116,47 +116,50 @@
               <th>Date ordered</th>
               <th>Total</th>
               <th>Ship to address:</th>
-              <th>Status: </th>
+              <th>User phone number </th>
               <th>PDF</th>
+              <th>Status</th>
+              <th>Edit status</th>
             </tr>
           </thead>
 
           <tbody>
         <% if @user_receipts != nil %>
-           
+          
               <% @user_receipts.each do |user_receipt| %>
-                  <% if user_receipt.user_id == current_user.id %>
-                      <tr>
-        
-                        <th><%= user_receipt.created_at %></th>
-                        <td><%= user_receipt.total %> VND</td>
-                        <td><%= user_receipt.address %></td>
-                       <% if user_receipt.status == 0 %>
+                  <tr>
+    
+                    <th><%= user_receipt.created_at %></th>
+                    <td><%= user_receipt.total %> VND</td>
+                    <td><%= user_receipt.address %></td>
+                    <td><%= user_receipt.phone %></td>
+                    <td >
+                      
+                        <%= link_to "Show details", rails_blob_path(user_receipt.file, disposition: "inline") %>
+                     
+                    </td>
+                    <% if user_receipt.status == 0 %>
                         <td style="color: #7048e8">
                             Processing
                         </td>
-                        <% elsif user_receipt.status == 1 %>
-                            <td style="color: #f08c00">
-                                Delivering
-                            </td>
-                        <% elsif user_receipt.status == 2 %>
-                            <td style="color: #37b24d">
-                                Success
-                            </td>
-                        <% elsif user_receipt.status == 3 %>
-                            <td style="color: red">
-                                Rejected
-                            </td>
-                        <% end %>
-                        <td >
-                          
-                            <%= link_to "Show details", rails_blob_path(user_receipt.file, disposition: "inline") %>
-                         
+                    <% elsif user_receipt.status == 1 %>
+                        <td style="color: #f08c00">
+                            Delivering
                         </td>
-                      </tr>
-                  <% end %>
+                    <% elsif user_receipt.status == 2 %>
+                        <td style="color: #37b24d">
+                            Success
+                        </td>
+                    <% elsif user_receipt.status == 3 %>
+                        <td style="color: red">
+                            Rejected
+                        </td>
+                    <% end %>
+                    <td><%= link_to "Edit Status", edit_user_receipt_path(user_receipt) %></td>
+                  </tr>
                 <% end %>
            
+            
             
         <% end %>
           </tbody>

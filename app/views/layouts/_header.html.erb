@@ -1,13 +1,19 @@
 <header class="header margin-bottom-md ">
-    <% if current_user.admin == false %>
-          <a href="/products" class="main-nav-link" style="font-size: 3rem;">
-            Fastfood
-          </a>
-     <% else %>
-          <a href="/manage_products" class="main-nav-link" style="font-size: 3rem;">
-            Dashboard
-          </a>
-     <% end %>
+    <% if logged_in? %>
+        <% if current_user.admin == false %>
+              <a href="/products" class="main-nav-link" style="font-size: 3rem;">
+                Fastfood
+              </a>
+         <% else %>
+              <a href="/manage_products" class="main-nav-link" style="font-size: 3rem;">
+                Dashboard
+              </a>
+         <% end %>
+    <% else %>
+        <a href="/products" class="main-nav-link" style="font-size: 3rem;">
+                Fastfood
+        </a>
+    <% end %>
       <nav class="main-nav">
         <ul class="main-nav-list">
           
@@ -22,7 +28,7 @@
               <% else %>
                   <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
                   <li><a class="main-nav-link" style="font-weight: 500" href="/manage_products">Manage Products</a></li>
-                  <li><a class="main-nav-link" href="/user_receipts">Orders</a></li>
+                  <li><a class="main-nav-link" href="/manage_orders">Orders</a></li>
                   <li><a class="main-nav-link" href="/manage_categories">Manage Categories</a></li>
               <% end %>
           <% else %>

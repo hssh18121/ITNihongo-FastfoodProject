@@ -8,6 +8,7 @@
 - Sign in with your paiza account 
 - Create a new ruby on rails server
 - In the terminal, run git clone https://github.com/hssh18121/ITNihongo-FastfoodProject.git
+- In order to avoid bugs related to "poppler" gem, run these command: "sudo apt-get update" and then "sudo apt -y install libpoppler-glib-dev"
 - Next, run bundle install, and then rails db:migrate
 
 ## Notable routes - to test the function of this project:  

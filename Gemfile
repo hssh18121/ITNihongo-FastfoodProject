@@ -51,9 +51,13 @@ gem "image_processing", "~> 1.2"
 gem "receipts"
 
 gem 'will_paginate', '~> 3.3'
+
+ gem "poppler"
+
+
 group :development, :test do
   gem "sqlite3", "~> 1.4"
-#   gem "poppler"
+ 
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

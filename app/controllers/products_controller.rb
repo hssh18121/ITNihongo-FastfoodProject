@@ -84,6 +84,7 @@ class ProductsController < ApplicationController
     @user_receipt.address = params[:address]
     @user_receipt.total = total
     @user_receipt.user_id = current_user.id
+    @user_receipt.status = 0
     @user_receipt.save
     session[:cart] = nil
     # redirect_to "http://localhost:3000/checkout/#{@user_receipt.id}"
@@ -103,18 +104,18 @@ class ProductsController < ApplicationController
         ["Payment method", "Cash"]
       ],
       company: {
-        name: "Fastfood",
-        address: "So 1 Dai Co Viet",
-        email: "Fastfood@gmail.com",
+        name: "Restaurant: Fastfood",
+        address: "Address: So 1 Dai Co Viet",
+        email: "Email: Fastfood@gmail.com",
 
       },
       recipient: [
 
-          @user_receipt.name,
-          @user_receipt.address,
-          @user_receipt.phone,
+        "<b>Customer name:</b> #{@user_receipt.name}",
+         "<b>Ship to address:</b> #{ @user_receipt.address}",
+         "<b>Customer phone number:</b> #{ @user_receipt.phone}",
           nil,
-          current_user.email
+          "<b>User email: </b>#{current_user.email}"
 
       ],
 

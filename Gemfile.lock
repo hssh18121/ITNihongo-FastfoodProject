@@ -73,6 +73,13 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cairo (1.17.8)
+      native-package-installer (>= 1.0.3)
+      pkg-config (>= 1.2.2)
+      red-colors
+    cairo-gobject (4.1.0)
+      cairo (>= 1.16.2)
+      glib2 (= 4.1.0)
     capybara (3.38.0)
       addressable
       matrix
@@ -90,8 +97,17 @@ GEM
       reline (>= 0.3.1)
     erubi (1.12.0)
     ffi (1.15.5)
+    fiddle (1.1.1)
+    gio2 (4.1.0)
+      fiddle
+      gobject-introspection (= 4.1.0)
+    glib2 (4.1.0)
+      native-package-installer (>= 1.0.3)
+      pkg-config (>= 1.3.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gobject-introspection (4.1.0)
+      glib2 (= 4.1.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -122,6 +138,7 @@ GEM
     mini_portile2 (2.8.1)
     minitest (5.17.0)
     msgpack (1.6.0)
+    native-package-installer (1.1.5)
     net-imap (0.3.4)
       date
       net-protocol
@@ -137,6 +154,10 @@ GEM
       racc (~> 1.4)
     pdf-core (0.9.0)
     pg (1.4.5)
+    pkg-config (1.5.1)
+    poppler (4.1.0)
+      cairo-gobject (= 4.1.0)
+      gio2 (= 4.1.0)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -184,6 +205,8 @@ GEM
     receipts (2.2.0)
       prawn (>= 1.3.0, < 3.0.0)
       prawn-table (~> 0.2.1)
+    red-colors (0.3.0)
+      matrix
     regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -246,6 +269,7 @@ DEPENDENCIES
   jbuilder
   matrix (~> 0.4.2)
   pg (~> 1.4.3)
+  poppler
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   rails_12factor

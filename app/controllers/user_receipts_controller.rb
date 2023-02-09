@@ -17,6 +17,7 @@ class UserReceiptsController < ApplicationController
 
   # GET /user_receipts/1/edit
   def edit
+    @user_receipt = UserReceipt.find(params[:id])
   end
 
   # POST /user_receipts or /user_receipts.json
@@ -36,9 +37,11 @@ class UserReceiptsController < ApplicationController
 
   # PATCH/PUT /user_receipts/1 or /user_receipts/1.json
   def update
+      @user_receipt = UserReceipt.find(params[:id])
+     @user_receipt.status = params[:status].to_i
     respond_to do |format|
-      if @user_receipt.update(user_receipt_params)
-        format.html { redirect_to user_receipt_url(@user_receipt), notice: "User receipt was successfully updated." }
+      if @user_receipt.save
+        format.html { redirect_to manage_orders_url, notice: "User receipt was successfully updated." }
         format.json { render :show, status: :ok, location: @user_receipt }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,6 +60,10 @@ class UserReceiptsController < ApplicationController
     end
   end
 
+  def manage_orders 
+      @user_receipts = UserReceipt.all
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_receipt
@@ -65,6 +72,6 @@ class UserReceiptsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_receipt_params
-      params.require(:user_receipt).permit(:name, :phone, :address, :total)
+      params.require(:user_receipt).permit(:name, :phone, :address, :total, :status)
     end
 end
