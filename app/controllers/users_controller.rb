@@ -29,8 +29,13 @@ class UsersController < ApplicationController
     @user.phone = params[:phone]
     @user.password = params[:password]
     @user.admin = false
-    @user.save
-    redirect_to login_path
+    respond_to do |format|
+        if @user.save
+            format.html { redirect_to login_url, notice: "Successfully created. Login now!" }
+        else 
+            format.html { redirect_to register_url, notice: "Invalid Input" }
+        end
+    end
   end
 
   def new_user

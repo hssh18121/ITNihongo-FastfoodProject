@@ -22,25 +22,29 @@
 - "/products/{id}": Show the detailed information of the respective product's id
 - "/favourites": Show the list of user's favourite products
 - "/cart": Show products that have been added to cart
-- "/checkout/{receipt_id}": Notifying checkout successfully
+- "/checkout/{receipt_id}": Notify checkout successfully
 - "/user_receipts": Show user's order history
+- "/manage_account": Make change to user's profile
+- "/change_password": Change user's password
 
 ### Admin's routes (UI hasn's been implemented yet): 
-#### crud categories & products & users & user_receipts
-- "/" - for show all, "/new" - for create new, "/{id}/edit" for edit
-- ***Note: A new product couldn't be created without a category, so make sure to create a category first"***
+#### manage categories & products & orders
+- "/manage-categories": CRUD category
+- "/manage-products": CRUD product
+- "/manage-orders": Set new status for user orders
+- ***Note1: A new product couldn't be created without a category, so make sure to create a category first"***
+- ***Note2: In order to create an admin account, create a normal account and then set admin field to true in rails console"***
 
 ## To-do tasks: 
 - Implement UI for the admin page (almost done)
+- Render pdf receipt function crashes whenever the receipt's info contains Vietnamese characters => need to fix this bug
 - Specifying user and admin role (the default role is user, you could set an account to become admin by using the rails console)
-- Refactor the source code, since everything is extremely chaotic right now :)
-- Adding styles to flash messages
 
 
 ### Recommended: 
 - Read the routes.rb file for the full version of routes definition in this project
-- Use the command rails console to alter the data directly in the terminal
-- Use the command rails routes --expanded to see a clearer version of routes list
+- Use the command rails console (rails c) to alter the data directly in the terminal
+
 
 
 
