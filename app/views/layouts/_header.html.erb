@@ -1,3 +1,9 @@
+
+<style>
+    #nav-link {
+        font-weight: 600;
+    }
+</style>
 <header class="header margin-bottom-md ">
     <% if logged_in? %>
         <% if current_user.admin == false %>
@@ -19,17 +25,17 @@
           
           <% if logged_in? %>
               <% if current_user.admin == false %>
-                  <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
-                  <li><a class="main-nav-link" style="font-weight: 500" href="/manage_account">Manage account</a></li>
-                  <li><a class="main-nav-link" href="/user_receipts">Order history</a></li>
-                  <li><a class="main-nav-link" href="/change_password">Change password</a></li>
-                  <li><a class="main-nav-link" href="favourites">Favourites</a></li>
-                  <li><%= link_to 'Your cart', cart_path, class: "main-nav-link nav-cta"  %></li>
+                  <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", id: "nav-link", method: :post %></li>
+                  <li><a class="main-nav-link" id="nav-link" href="/manage_account">Manage account</a></li>
+                  <li><a class="main-nav-link" id="nav-link" href="/user_receipts">Order history</a></li>
+                  <li><a class="main-nav-link" id="nav-link" href="/change_password">Change password</a></li>
+                  <li><a class="main-nav-link" id="nav-link" href="favourites">Favourites</a></li>
+                  <li><%= link_to 'Your cart', cart_path, class: "main-nav-link nav-cta", id: "nav-link"  %></li>
               <% else %>
-                  <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", method: :post %></li>
-                  <li><a class="main-nav-link" style="font-weight: 500" href="/manage_products">Manage Products</a></li>
-                  <li><a class="main-nav-link" href="/manage_orders">Orders</a></li>
-                  <li><a class="main-nav-link" href="/manage_categories">Manage Categories</a></li>
+                  <li><%= link_to 'Log out', logout_path, data: {"turbo-method": :delete}, class: "main-nav-link", id: "nav-link", method: :post %></li>
+                  <li><a class="main-nav-link" id="nav-link" href="/manage_products">Manage Products</a></li>
+                  <li><a class="main-nav-link" id="nav-link" href="/manage_orders">Orders</a></li>
+                  <li><a class="main-nav-link" id="nav-link" href="/manage_categories">Manage Categories</a></li>
               <% end %>
           <% else %>
           <li>

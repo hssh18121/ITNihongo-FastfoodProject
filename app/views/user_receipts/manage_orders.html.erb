@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 <%= stylesheet_link_tag "products", "data-turbo-track": "reload" %>
 <%= stylesheet_link_tag "show_product", "data-turbo-track": "reload" %>
-<p style="color: green"><%= notice %></p>
+
 <style>
 /*
     SPACING SYSTEM (px)
@@ -114,7 +114,7 @@
             <tr>
 
               <th>Date ordered</th>
-              <th>Total</th>
+              
               <th>Ship to address:</th>
               <th>User phone number </th>
               <th>PDF</th>
@@ -130,7 +130,7 @@
                   <tr>
     
                     <th><%= user_receipt.created_at %></th>
-                    <td><%= user_receipt.total %> VND</td>
+                    
                     <td><%= user_receipt.address %></td>
                     <td><%= user_receipt.phone %></td>
                     <td >

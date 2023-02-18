@@ -95,9 +95,13 @@
                 width: 100%;
                 height: 60px;
                 top: 0;
+                left: 2rem;
                 /* background-color: rgba(39,174,96,0.8); */
                 display: flex;
                 align-items: center;
+                color: #fff;
+                font-weight: 600;
+                font-size: 1.5rem;
             }
 
             svg {
@@ -119,7 +123,9 @@
   
        
             <div class="content-container">
-                
+                <nav class="nav-bar">
+                    Product Management Form
+                </nav>
                 <div id="user_register" class="box-content">
                     
                     <%= form_with(model: product) do |form| %>
@@ -177,8 +183,8 @@
                         </br>
                         <div class="input-block" id="link-to-other-pages">
                          
-                          <%= link_to "Back to dashboard", manage_products_path %> |
-                          <%= link_to "Destroy this product", @product, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }  %>
+                          <%= link_to "Back to dashboard", manage_products_path %> 
+                          
                         </div>
                     <% end %>
                 </div>
