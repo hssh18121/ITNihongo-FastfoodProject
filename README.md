@@ -1,8 +1,13 @@
 # Notes for this project
 
 ## Project's main functionality description
-- User: loggin in, view the products, add product to cart, add to favourite, checkout, change account information, view orders history
+- User: loggin in, view the products, add product to cart, add to favourite, checkout, change account information, view orders history,...
 - Admin: managing products, categories, update orders status
+
+## How to run the project locally
+- Clone the code to your local machine: ```git clone https://github.com/hssh18121/ITNihongo-FastfoodProject.git```
+- Change the ruby version in Gemfile and .ruby-version file, then run ```bundle install```
+- Next, run ```rails db:migrate``` and then ```rails s``` (project runs on port 3000)
 
 ## How to run the project on paiza.cloud 
 - Sign in with your paiza account 
@@ -34,7 +39,7 @@
 - ```/manage-products``` : CRUD product
 - ```/manage-orders``` : Set new status for user orders
 > - ***Note1: A new product couldn't be created without a category, so make sure to create a category first***
-> - ***Note2: In order to create an admin account, create a normal account and then set admin field to true in rails console***
+> - ***Note2: In order to create an admin account, create an account with username of admin***
 
 ## To-do tasks: 
 - Render pdf receipt function crashes whenever the receipt's info contains Vietnamese characters => need to fix this bug
