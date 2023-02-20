@@ -109,7 +109,7 @@
         padding-bottom: 9px;
         border-radius: 5px;
     }
-    
+
     .show-detail-link:link, .show-detail-link:visited {
          font-size: 1.5rem;
         color: #fff;
@@ -132,14 +132,14 @@
 
   <main>
     <div>
-      
+
       <div style="display: flex; justify-content: center">
         <table>
           <thead>
             <tr>
 
               <th>Date ordered</th>
-              
+
               <th>Ship to address:</th>
               <th>User phone number </th>
               <th>Details</th>
@@ -150,18 +150,18 @@
 
           <tbody>
         <% if @user_receipts != nil %>
-          
+
               <% @user_receipts.each do |user_receipt| %>
                   <tr>
-    
+
                     <th><%= user_receipt.created_at %></th>
-                    
+
                     <td><%= user_receipt.address %></td>
                     <td><%= user_receipt.phone %></td>
                     <td >
-                      
+
                         <%= link_to "Details", rails_blob_path(user_receipt.file, disposition: "inline"), class: "show-detail-link" %>
-                     
+
                     </td>
                     <% if user_receipt.status == 0 %>
                         <td style="color: #7048e8">
@@ -180,12 +180,12 @@
                             Rejected
                         </td>
                     <% end %>
-                    <td><%= link_to "Edit Status", edit_user_receipt_path(user_receipt), class: "edit-status-link" %></td>
+                    <td><%= link_to "Edit", edit_user_receipt_path(user_receipt), class: "edit-status-link" %></td>
                   </tr>
                 <% end %>
-           
-            
-            
+
+
+
         <% end %>
           </tbody>
         </table>
@@ -196,8 +196,3 @@
     </main>
 
 </body>
-
-
-
-
-

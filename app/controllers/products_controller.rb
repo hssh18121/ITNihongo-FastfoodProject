@@ -3,8 +3,8 @@ class ProductsController < ApplicationController
   before_action :require_user, except: [:favourites, :show, :index, :search, :filter]
   before_action :require_admin, except: [:cart, :favourites, :search, :sort, :show, :index, :add_to_cart, :remove_from_cart, :checkout, :new_checkout, :add_quantity, :subtract_quantity,
   :add_to_favourite, :remove_from_favourite, :add_to_favourite2, :remove_from_favourite2, :remove_product_in_cart, :manage_account, :show_checkout_form]
-    
-   
+
+
   def add_to_cart
     id = params[:id].to_i
     session[:cart] << id unless session[:cart].include?(id)
@@ -28,16 +28,16 @@ class ProductsController < ApplicationController
 
   def cart
     @product_checkout_details = ProductCheckoutDetail.all
-   
+
   end
-    
-    
-    def show_checkout_form 
+
+
+    def show_checkout_form
     end
-    
-    def manage_account 
+
+    def manage_account
     end
-    
+
   def add_quantity
     id = params[:id].to_i
     @product_checkout_detail = ProductCheckoutDetail.find_by(id: id)
@@ -210,8 +210,9 @@ class ProductsController < ApplicationController
       @categories = Category.all
     @product = Product.find(params[:id])
      @product.category_id = params[:category_id].to_i
+
     respond_to do |format|
-      if @product.save
+      if @product.update(product_params)
         format.html { redirect_to manage_products_url, notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -270,7 +271,7 @@ class ProductsController < ApplicationController
     @favourite_managers = FavouriteManager.all
   end
 
-  def manage_products 
+  def manage_products
       @products = Product.all
   end
   private
