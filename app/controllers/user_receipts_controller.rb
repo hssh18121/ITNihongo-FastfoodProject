@@ -3,7 +3,7 @@ class UserReceiptsController < ApplicationController
 
   # GET /user_receipts or /user_receipts.json
   def index
-    @user_receipts = UserReceipt.all
+    @user_receipts = UserReceipt.all.order(created_at: :desc)
   end
 
   # GET /user_receipts/1 or /user_receipts/1.json
@@ -61,7 +61,7 @@ class UserReceiptsController < ApplicationController
   end
 
   def manage_orders 
-      @user_receipts = UserReceipt.all
+      @user_receipts = UserReceipt.all.order(created_at: :desc)
   end
   
   private

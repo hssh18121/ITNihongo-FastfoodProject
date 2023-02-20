@@ -163,11 +163,11 @@ class ProductsController < ApplicationController
     elsif params[:value].to_i == 2
       @products = Product.order(price: :desc)
     elsif params[:value].to_i == 3
-      @products = Product.where('price > 25000 AND price < 50000').order(price: :asc)
+      @products = Product.where('price >= 25000 AND price <= 50000').order(price: :asc)
     elsif params[:value].to_i == 4
-      @products = Product.where('price > 50000 AND price < 100000').order(price: :asc)
+      @products = Product.where('price >= 50000 AND price <= 100000').order(price: :asc)
     elsif params[:value].to_i == 5
-      @products = Product.where('price > 100000').order(price: :asc)
+      @products = Product.where('price >= 100000').order(price: :asc)
     end
   end
   # GET /products/1 or /products/1.json
@@ -207,6 +207,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+      @categories = Category.all
     @product = Product.find(params[:id])
      @product.category_id = params[:category_id].to_i
     respond_to do |format|

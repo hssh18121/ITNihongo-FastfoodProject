@@ -28,7 +28,13 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     @user.phone = params[:phone]
     @user.password = params[:password]
-    @user.admin = false
+    
+    if params[:account] == "admin"
+        @user.admin = true
+    else 
+        @user.admin = false
+    end
+    
     respond_to do |format|
         if @user.save
             format.html { redirect_to login_url, notice: "Successfully created. Login now!" }

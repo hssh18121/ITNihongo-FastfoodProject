@@ -96,6 +96,33 @@
     cursor: pointer;
 }
 
+.edit-status-link:link, .edit-status-link:visited {
+        font-size: 1.5rem;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+         align-items: center;
+         justify-content: center;
+        background-color: #37b24d;
+        width: 9rem;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border-radius: 5px;
+    }
+    
+    .show-detail-link:link, .show-detail-link:visited {
+         font-size: 1.5rem;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+         align-items: center;
+         justify-content: center;
+        background-color: #f59f00;
+        width: 9rem;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border-radius: 5px;
+    }
 
 </style>
 
@@ -105,9 +132,7 @@
 
   <main>
     <div>
-      <div>
-        <a href="#" class="cart--info--backlink" style="font-size: 30px; margin-top: 30px">Order history:</a>
-      </div>
+      
       <div style="display: flex; justify-content: center">
         <table>
           <thead>
@@ -117,7 +142,7 @@
               
               <th>Ship to address:</th>
               <th>User phone number </th>
-              <th>PDF</th>
+              <th>Details</th>
               <th>Status</th>
               <th>Edit status</th>
             </tr>
@@ -135,7 +160,7 @@
                     <td><%= user_receipt.phone %></td>
                     <td >
                       
-                        <%= link_to "Show details", rails_blob_path(user_receipt.file, disposition: "inline") %>
+                        <%= link_to "Details", rails_blob_path(user_receipt.file, disposition: "inline"), class: "show-detail-link" %>
                      
                     </td>
                     <% if user_receipt.status == 0 %>
@@ -155,7 +180,7 @@
                             Rejected
                         </td>
                     <% end %>
-                    <td><%= link_to "Edit Status", edit_user_receipt_path(user_receipt) %></td>
+                    <td><%= link_to "Edit Status", edit_user_receipt_path(user_receipt), class: "edit-status-link" %></td>
                   </tr>
                 <% end %>
            

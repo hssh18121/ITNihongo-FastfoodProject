@@ -106,6 +106,22 @@
       text-underline-offset: 3px;
       text-decoration-thickness: 1px;
     }
+    
+    .edit-product-link:link, .edit-product-link:visited {
+        font-size: 1.5rem;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+         align-items: center;
+         justify-content: center;
+        background-color: #37b24d;
+        width: 70px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border-radius: 5px;
+    }
+    
+    
 </style>
 
 
@@ -118,7 +134,7 @@
           <%= form_with(scope: :session, url: login_path, local: true) do |form| %>
             <div>
 
-              <%= form.text_field :account, class: "form", size: "30", placeholder: "Type your email in here", style: "margin-bottom: 15px" %>
+              <%= form.text_field :account, class: "form", size: "30", placeholder: "Type your username in here", style: "margin-bottom: 15px" %>
             </div>
 
             <div>
